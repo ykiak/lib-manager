@@ -5,6 +5,7 @@ import Input from "@/src/components/form/Input";
 import { supabase } from "@/src/lib/supabase";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function SignUp() {
     const router = useRouter()
@@ -49,6 +50,7 @@ export default function SignUp() {
                 />
                 <Button type="submit" text="Submit" />
             </form>
+            <p>Already have an account? <Link href="./sign-in">Sign In</Link></p>
         </>
     )
 }

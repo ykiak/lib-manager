@@ -5,6 +5,7 @@ import Button from "@/src/components/form/Button"
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/src/lib/supabase";
+import Link from "next/link";
 
 export default function SignIn() {
     const router = useRouter()
@@ -48,6 +49,7 @@ export default function SignIn() {
                 />
                 <Button type="submit" text="Submit" />
             </form>
+            <p>Do not have an account? <Link href="./sign-up">Sign Up</Link></p>
         </>
     )
 }

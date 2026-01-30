@@ -6,9 +6,11 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/src/lib/supabase";
 import Link from "next/link";
+import Message from "@/src/components/message/Message"
 
 export default function SignIn() {
     const router = useRouter()
+    const [msg, setMsg] = useState("")
     const [user, setUser] = useState({
         email: "",
         password: ""
@@ -22,9 +24,10 @@ export default function SignIn() {
         })
 
         if (!error) {
+            setMsg("")
             router.push("/pages/dashboard")
         } else {
-            console.log(error)
+            setMsg(error.message)
         }
     }
 
@@ -50,6 +53,7 @@ export default function SignIn() {
                 <Button type="submit" text="Submit" />
             </form>
             <p>Do not have an account? <Link href="./sign-up">Sign Up</Link></p>
+            <Message text={msg}/>
         </>
     )
 }
